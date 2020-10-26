@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+
+{% include 'error_alert_message.html' %}
+{% include 'success_alert_message.html' %}
+
+
+<div class="offset-sm-1">
+    {% include 'home_page/header.html' %}
+    <hr>
+    {% include 'home_page/content.html' %}
+    {% include 'home_page/footer.html' %}
+</div>
+
+
+{% endblock %}

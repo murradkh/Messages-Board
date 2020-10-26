@@ -1,0 +1,52 @@
+    <div class="row">
+        <div class="col-sm-8 p-4">
+            <a class="h1" href="{% url 'home' %}" style="text-decoration:none">Message Board</a>
+        </div>
+
+        <div class="col-sm-2">
+            <h4>Hello, {{ user.username|default:'Guest' }}!</h4>
+            {% if user.is_authenticated %}
+            <a type="button" class="btn btn-default btn-sm" href="{% url 'logout' %}">
+                <span class="glyphicon glyphicon-log-out"></span> Log out
+            </a>
+            {% else %}
+            <a href="{% url 'login' %}" class="btn btn-dark">Login</a>
+            <a href="{% url 'register' %}" class="btn btn-dark">Register</a>
+            {% endif %}
+        </div>
+        {% if user.is_authenticated %}
+        <strong class="col-sm-2 h4">Currency: {{user.profile.favorite_currency.currency_name}}</strong>
+        {% endif %}
+    </div>
+
+
+    <div class="row">
+        <div class="col-2">
+            <a href="{% url 'create_message' %}" class="btn btn-success">
+                <span class="glyphicon glyphicon-plus"></span>
+                Add new message
+            </a>
+        </div>
+        <div class="col-6">
+            <form method="get" class="form-inline">
+                <div class="form-group mr-sm-2">
+                    {{ search_form.search_title }}
+                </div>
+                <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+        <div class="dropdown col p-2">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Messages Per Page
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="{% url 'home' %}?{{search_query}}&msgs_per_page=5">5</a>
+                <a class="dropdown-item" href="{% url 'home' %}?{{search_query}}&msgs_per_page=10">10</a>
+                <a class="dropdown-item" href="{% url 'home' %}?{{search_query}}&msgs_per_page=20">20</a>
+                <a class="dropdown-item" href="{% url 'home' %}?{{search_query}}&msgs_per_page=30">30</a>
+            </div>
+
+        </div>
+
+    </div>

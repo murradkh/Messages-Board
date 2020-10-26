@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block page_content %}
+
+
+<!-- for Displaying error messages in invalid forms -->
+{% for field_name,related_errors in errors.items %}
+{% for error in related_errors %}
+<div class="alert alert-danger">
+    <strong>{{field_name}}: {{ error|escape }}</strong>
+</div>
+{% endfor %}
+{% endfor %}
+
+
+<form method="post" class="offset-sm-5">
+    <h2>Registration</h2>
+
+    {% csrf_token %}
+    <div class="form-group">
+        {{ user_form.username }}
+    </div>
+    <div class="form-group">
+        {{ user_form.email }}
+    </div>
+    <div class="form-group">
+        {{ user_form.password }}
+    </div>
+    {{currency_form.as_p}}
+
+    <input type="submit" value="Register" class="btn btn-primary">
+    <a href="{% url 'home' %}" class="btn btn-danger">Cancel</a>
+</form>
+
+
+{% endblock %}

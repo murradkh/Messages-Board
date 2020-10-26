@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+
+
+<div class="jumbotron text-center">
+    <h1 class="display-3">Message Created!</h1>
+    {% if passcode %}
+    <h1 class="display-3">Your passcode is {{passcode}}</h1>
+    {% endif %}
+    <hr>
+    <p class="lead">
+        <a class="btn btn-primary" href="{% url 'home' %}">Continue to homepage</a>
+    </p>
+</div>
+
+{% endblock %}

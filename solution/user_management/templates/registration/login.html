@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block page_content %}
+
+<form method="post" class="offset-sm-5">
+    {% csrf_token %}
+    <h2>Login</h2>
+
+    {{ form.as_p }}
+    <input type="submit" value="Login" class="btn btn-primary">
+    <a href="{% url 'home' %}" class="btn btn-danger">Cancel</a>
+
+</form>
+
+{% endblock %}
