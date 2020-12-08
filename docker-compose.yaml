@@ -1,0 +1,17 @@
+version: "3.8"
+services:
+  message_board:
+    build: .
+#    image: 535629738702.dkr.ecr.us-east-2.amazonaws.com/message-board
+
+#    command: python manage.py runserver 0.0.0.0:8000
+
+    ports:
+      - "8000:8000"
+    volumes:
+      - message-board-persistent_data:/home/message-board/persistent_data
+volumes:
+  message-board-persistent_data:
+    driver: local # telling docker to create physical storage in
+                  # a local file-system (on current mounted file-system
+                  #where docker-compose has been run)
