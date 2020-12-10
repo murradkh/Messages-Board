@@ -1,10 +1,10 @@
 version: "3.8"
 services:
   message_board:
-    build: .
-#    image: 535629738702.dkr.ecr.us-east-2.amazonaws.com/message-board
+    image: eu.gcr.io/message-board-293714/message-board_image
 
-#    command: python manage.py runserver 0.0.0.0:8000
+    #    build: .
+    #    command: python manage.py runserver 0.0.0.0:8000
 
     ports:
       - "8000:8000"
